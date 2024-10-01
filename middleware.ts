@@ -20,7 +20,7 @@ export default async function middleware(req: NextRequest) {
         return NextResponse.rewrite(new URL(`/home${path === '/' ? '' : path}`, req.url));
     }
 
-    const session = true;
+    const session = false;
 
     if (!session && hostname !== `auth.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
         return NextResponse.redirect(new URL(`${process.env.HTTP_PROTOCOL}://auth.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`));
